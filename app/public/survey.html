@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TV Finder Pro</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://use.fontawesome.com/b38c8ed4c7.js"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <title>TV Friend Finder</title>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://use.fontawesome.com/b38c8ed4c7.js"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper blue accent-2">
+          <a href="/" class="brand-logo" id="logo">Friend Finder</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 z-depth-5 mainpanel">
+            <div id="mainpanel-content">
+              <h2>Questions</h2>
+              <div class="divider"></div>
+
+              <p>About You</p>
+
+              <div class="input-field col s6">
+                <p>Name:</p>
+
+                <input type="text" class="validate" placeholder="Your Name" id="userName">
+              </div>
+
+              <div class="input-field col s6">
+                <p>Upload Image</p>
+                <input type="text" class="validate" placeholder="Photo Link" id="userPhoto">
+              </div>
+
+
+              <div class="input-field col s12">
+                <h5>Question 1</h5>
+                <h5>Game of Thrones is the best TV show of all time.</h5>
+                <select id="question1">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1 (Disagree)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Agree)</option>
+                </select>
+              </div>
+
+              <div class="input-field col s12">
+                <h5>Question 2</h5>
+                <h5>Generally, you enjoy watching TV series more than movies.</h5>
+                <select id="question2">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1 (Disagree)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Agree)</option>
+                </select>
+              </div>
+
+              <div class="input-field col s12">
+                <h5>Question 3</h5>
+                <h5>Hal is a better character than Walter White.</h5>
+                <select id="question3">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1 (Disagree)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Agree)</option>
+                </select>
+              </div>
+
+              <div class="input-field col s12">
+                <h5>Question 4</h5>
+                <h5>Kramer is the best character on Seinfeld</h5>
+                <select id="question4">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1 (Disagree)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Agree)</option>
+                </select>
+              </div>
+
+              <div class="input-field col s12">
+                <h5>Question 5</h5>
+                <h5>Arrested Development Season 4 was a bad idea.</h5>
+                <select id="question5">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1 (Disagree)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (Agree)</option>
+                </select>
+              </div>
+
+              <div>
+                <button class="btn waves-effect waves-light" type="submit" name="action" id="submitButton">Submit Responses</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="container">
+      <a href="/api/friends">API Friends List</a>
+    </div>
+    </footer>
+
+    <!-- Modal-->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Closest Friend Match</h4>
+        <div class="divider"></div>
+        <h5 id="userMatch"></h5>
+        <img id="userMatchImage" class="materialboxed" width="650" src="">
+      </div>
+      <div class="modal-footer">
+        <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Try Again!</a>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('select').material_select();
+
+        $('.modal').modal({
+          dismissible: false,
+          opacity: .5, // 
+          inDuration: 300,
+          outDuration: 200,
+          startingTop: '4%',
+          endingTop: '10%'
+        });
+      });
+
+      // Activate submit button
+      $('#submitButton').on('click', function (event) {
+        event.preventDefault();
+
+        // Gather user inputs
+        var userInput = {
+          name: $('#userName').val().trim(),
+          photo: $('#userPhoto').val().trim(),
+          scores: [
+            $('#question1').val().trim(),
+            $('#question2').val().trim(),
+            $('#question3').val().trim(),
+            $('#question4').val().trim(),
+            $('#question5').val().trim(),
+          ]
+        };
+
+        $.post('/api/friends', userInput)
+          .done(function (data) {
+            $('#userMatch').html(data.matchName);
+            $("#userMatchImage").attr("src", data.matchImage);
+            $('#modal1').modal('open');
+          });
+      });
+    </script>
+  </body>
+
+</html>
